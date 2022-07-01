@@ -23,7 +23,7 @@ categories = [
     'Malware Analysis'
     ]
 
-image = "post/Mission_RCTS/mission.JPG"
+image = "post/Mission_RCTS/mission.jpg"
 +++
 
 ---
