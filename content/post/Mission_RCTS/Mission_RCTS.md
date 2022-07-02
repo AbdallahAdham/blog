@@ -16,11 +16,11 @@ tags = [
     'Malware']
 
 categories = [
-    'Digital Forensics',
-    'PenTesting', 
+    'Digital-Forensics',
+    'Pen-Testing', 
     'OSINT', 
-    'Web Security',
-    'Malware Analysis'
+    'Web-Security',
+    'Malware-Analysis'
     ]
 
 image = "post/Mission_RCTS/missionCTF.jpg"
