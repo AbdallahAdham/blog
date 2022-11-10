@@ -335,4 +335,8 @@ cat root.txt
 
 #### Pwned
 
+<<<<<<< HEAD
 ![rooted](imgs/rooted.JPG)
+=======
+![rooted](post/Photobomb_HTB/imgs/rooted.JPG)
+>>>>>>> c40917692c858d54a00d622d840e56c9f4c255ad
