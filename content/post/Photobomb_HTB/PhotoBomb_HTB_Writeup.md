@@ -107,7 +107,7 @@ Now, We open the browser and see what is in this website.
 
 There is a **"Click here!"** button, Let's click on it ans see what happens?
 
-![sign_up1](post/Photobomb_HTB/imgs/2.JPG)
+![sign_up1](imgs/2.JPG)
 
 It opens a pop-up sign up form and asks for a username and password and if failed it redirects you to a **"401 Authorization Required"** under a **/printer** directory.
 
