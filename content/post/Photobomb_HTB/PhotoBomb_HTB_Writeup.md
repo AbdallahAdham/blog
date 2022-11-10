@@ -103,15 +103,15 @@ $ sudo echo "10.10.11.182    photobomb.htb" >> /etc/hosts
 
 Now, We open the browser and see what is in this website.
 
-![http_enum](post/Photobomb_HTB/imgs/1.JPG)
+![http_enum](imgs/1.JPG)
 
 There is a **"Click here!"** button, Let's click on it ans see what happens?
 
-![sign_up1](post/Photobomb_HTB/imgs/2.JPG)
+![sign_up1](imgs/2.JPG)
 
 It opens a pop-up sign up form and asks for a username and password and if failed it redirects you to a **"401 Authorization Required"** under a **/printer** directory.
 
-![401_page](post/Photobomb_HTB/imgs/3.JPG)
+![401_page](imgs/3.JPG)
 
 Now, I will do two things which are:
 1. Subdomain Enumeration
@@ -145,7 +145,7 @@ Files found with a 200 responce:
 
 So, We have found a Javascript file called **photobomb.js**, Let's see what is in it.
 
-![photobomb.js](post/Photobomb_HTB/imgs/4.JPG)
+![photobomb.js](imgs/4.JPG)
 
 ```js
 function init() {
@@ -167,29 +167,29 @@ http://pH0t0:b0Mb!@photobomb.htb/printer
 
 It opens a page contans a plenty of images and down there is a button to download any image we want.
 
-![images](post/Photobomb_HTB/imgs/5.JPG)
+![images](imgs/5.JPG)
 
 ### Exploitation
 
 Let's start burpsuite and intercept the downloading request.
 
-![req1](post/Photobomb_HTB/imgs/6.JPG)
+![req1](imgs/6.JPG)
 
 So, I have tried to command inject all the parameters with adding **;ls** at the end of each parameter and see what happens.
 
 Beginning with **photo** parameter:
 
-![req2](post/Photobomb_HTB/imgs/7.JPG)
+![req2](imgs/7.JPG)
 
 looks not injectable, Then trying on **dimensions** parameter:
 
-![req3](post/Photobomb_HTB/imgs/8.JPG)
+![req3](imgs/8.JPG)
 
 Also, Not injectable.
 
 Lastly, The **filetype** parameter:
 
-![req4](post/Photobomb_HTB/imgs/9.JPG)
+![req4](imgs/9.JPG)
 
 It shows no response, so, It is _injectable_.
 
@@ -206,11 +206,11 @@ $ nc -nlvp 4321
 listening on [any] 4321 ...
 ```
 
-![req5](post/Photobomb_HTB/imgs/10.JPG)
+![req5](imgs/10.JPG)
 
 And we got the **reverse shell**. Yay!
 
-![revshell](post/Photobomb_HTB/imgs/11.JPG)
+![revshell](imgs/11.JPG)
 
 Let's respawn a **tty**:
 ```bash
@@ -335,4 +335,4 @@ cat root.txt
 
 #### Pwned
 
-![rooted](post/Photobomb_HTB/imgs/rooted.JPG)
+![rooted](imgs/rooted.JPG)
