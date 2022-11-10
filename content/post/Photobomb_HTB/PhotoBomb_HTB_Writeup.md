@@ -17,12 +17,14 @@ categories = [
     'Web-Security',
     ]
 
-image = "post/Photobomb_HTB/photobomb_htb.JPG"
+image = "post/Photobomb_HTB/photobomb_htb.jpg"
 +++
 
 ---
 
 ## Scanning
+
+### Nmap
 
 ```bash
 $ nmap 10.10.11.182 -A -T4 -p- -oN nmap.txt
@@ -169,11 +171,13 @@ It opens a page contans a plenty of images and down there is a button to downloa
 
 ![images](post/Photobomb_HTB/imgs/5.JPG)
 
-### Exploitation
+## Exploitation
 
 Let's start burpsuite and intercept the downloading request.
 
 ![req1](post/Photobomb_HTB/imgs/6.JPG)
+
+### Command Injection
 
 So, I have tried to command inject all the parameters with adding **;ls** at the end of each parameter and see what happens.
 
@@ -331,12 +335,10 @@ ls
 root.txt
 root@photobomb:~# cat root.txt
 cat root.txt
+c40917692c858d54a00d622d840e56c9f4c255ad
 ```
 
-#### Pwned
+_Pwned_
 
-<<<<<<< HEAD
 ![rooted](post/Photobomb_HTB/imgs/rooted.JPG)
-=======
-![rooted](post/Photobomb_HTB/post/Photobomb_HTB/imgs/rooted.JPG)
->>>>>>> c40917692c858d54a00d622d840e56c9f4c255ad
+

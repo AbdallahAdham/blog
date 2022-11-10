@@ -29,12 +29,12 @@ rssFullContent = true
   lastUpdated = "July 01, 2022 5:30 UTC-2"
 
   [params.sidebar]
-  subtitle = "Jr Penetration Tester"
+  subtitle = "Penetration Tester"
 
     [params.sidebar.avatar]
     enabled = true
     local = true
-    src = "img/avatar.png"
+    src = "img/avatar.jpg"
 
   [params.article]
   math = false

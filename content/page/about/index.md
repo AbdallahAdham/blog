@@ -30,12 +30,12 @@ menu:
 
 *• I have knowledge about Web development and OWASP Top 10 web vulnerabilities.*
 
-**Check out my [CV](https://drive.google.com/file/d/1OxPodFsWKXtS2YnW3MJOZHfMqNriCId-/view?usp=sharing) for more information.**
+**Check out my [CV](https://drive.google.com/file/d/1a7koTn22r0VhsKre4POb_NVIRunsyDXm/view?usp=sharing) for more information.**
 
 
 ### **Education**
 
-- IT Senior student in faculty of Computers and Artificial Intelligence - Cairo University (2018 - Now).
+- IT graduate student in faculty of Computers and Artificial Intelligence - Cairo University (2018 - 2022).
 
 - Penetration Tester Scholarship - CyberTalents / Trend Micro (06/2021 - 09/2021).
 
@@ -43,7 +43,11 @@ menu:
 
 ### **Work Experience**
 
-- Cyber Security Engineer at Virtually Testing Foundation (05/2022 – present)
+- Penetration Tester at Security Meter (07/2022 - Now)
+
+- CTF Challenge Author at ZINAD IT (08/2022 - 09/2022)
+
+- Cyber Security Engineer at Virtually Testing Foundation (04/2022 – 07/2022)
 
 - Cisco CyberOps Intern at National Telecommunication Institute (NTI) (08/2021 – 10/2021)
 
