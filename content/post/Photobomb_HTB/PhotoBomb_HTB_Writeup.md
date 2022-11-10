@@ -17,7 +17,7 @@ categories = [
     'Web-Security',
     ]
 
-image = "post/Photobomb_HTB/photobomb_htb.jpg"
+image = "post/Photobomb_HTB/photobomb_htb.JPG"
 +++
 
 ---
@@ -103,15 +103,15 @@ $ sudo echo "10.10.11.182    photobomb.htb" >> /etc/hosts
 
 Now, We open the browser and see what is in this website.
 
-![http_enum](post/Photobomb_HTB/imgs/1.jpg)
+![http_enum](imgs/1.JPG)
 
 There is a **"Click here!"** button, Let's click on it ans see what happens?
 
-![sign_up1](post/Photobomb_HTB/imgs/2.jpg)
+![sign_up1](imgs/2.JPG)
 
 It opens a pop-up sign up form and asks for a username and password and if failed it redirects you to a **"401 Authorization Required"** under a **/printer** directory.
 
-![401_page](post/Photobomb_HTB/imgs/3.jpg)
+![401_page](imgs/3.JPG)
 
 Now, I will do two things which are:
 1. Subdomain Enumeration
@@ -145,7 +145,7 @@ Files found with a 200 responce:
 
 So, We have found a Javascript file called **photobomb.js**, Let's see what is in it.
 
-![photobomb.js](post/Photobomb_HTB/imgs/4.jpg)
+![photobomb.js](imgs/4.JPG)
 
 ```js
 function init() {
@@ -157,7 +157,7 @@ function init() {
 window.onload = init;
 ```
 
-Now, we credientals to signup to the **/printer** page.
+Now, we have credientals to signup to the **/printer** page.
 
 Copy and paste the URL given above which is:
 
@@ -167,29 +167,29 @@ http://pH0t0:b0Mb!@photobomb.htb/printer
 
 It opens a page contans a plenty of images and down there is a button to download any image we want.
 
-![images](post/Photobomb_HTB/imgs/5.jpg)
+![images](imgs/5.JPG)
 
 ### Exploitation
 
 Let's start burpsuite and intercept the downloading request.
 
-![req1](post/Photobomb_HTB/imgs/6.jpg)
+![req1](imgs/6.JPG)
 
 So, I have tried to command inject all the parameters with adding **;ls** at the end of each parameter and see what happens.
 
 Beginning with **photo** parameter:
 
-![req2](post/Photobomb_HTB/imgs/7.jpg)
+![req2](imgs/7.JPG)
 
 looks not injectable, Then trying on **dimensions** parameter:
 
-![req3](post/Photobomb_HTB/imgs/8.jpg)
+![req3](imgs/8.JPG)
 
 Also, Not injectable.
 
 Lastly, The **filetype** parameter:
 
-![req4](post/Photobomb_HTB/imgs/9.jpg)
+![req4](imgs/9.JPG)
 
 It shows no response, so, It is _injectable_.
 
@@ -206,11 +206,11 @@ $ nc -nlvp 4321
 listening on [any] 4321 ...
 ```
 
-![req5](post/Photobomb_HTB/imgs/10.jpg)
+![req5](imgs/10.JPG)
 
 And we got the **reverse shell**. Yay!
 
-![revshell](post/Photobomb_HTB/imgs/11.jpg)
+![revshell](imgs/11.JPG)
 
 Let's respawn a **tty**:
 ```bash
@@ -267,20 +267,20 @@ if we have tried to run that script, We get:
 ```bash
 wizard@photobomb:/opt$ ./cleanup.sh
 ./cleanup.sh
-chown: changing ownership of 'source_images/voicu-apostol-MWER49YaD-M-unsplash.jpg': Operation not permitted
-chown: changing ownership of 'source_images/masaaki-komori-NYFaNoiPf7A-unsplash.jpg': Operation not permitted
-chown: changing ownership of 'source_images/andrea-de-santis-uCFuP0Gc_MM-unsplash.jpg': Operation not permitted
-chown: changing ownership of 'source_images/tabitha-turner-8hg0xRg5QIs-unsplash.jpg': Operation not permitted
-chown: changing ownership of 'source_images/nathaniel-worrell-zK_az6W3xIo-unsplash.jpg': Operation not permitted
-chown: changing ownership of 'source_images/kevin-charit-XZoaTJTnB9U-unsplash.jpg': Operation not permitted
-chown: changing ownership of 'source_images/calvin-craig-T3M72YMf2oc-unsplash.jpg': Operation not permitted
-chown: changing ownership of 'source_images/eleanor-brooke-w-TLY0Ym4rM-unsplash.jpg': Operation not permitted
-chown: changing ownership of 'source_images/finn-whelen-DTfhsDIWNSg-unsplash.jpg': Operation not permitted
-chown: changing ownership of 'source_images/x.jpg': Operation not permitted
-chown: changing ownership of 'source_images/--reference=x.jpg': Operation not permitted
-chown: changing ownership of 'source_images/almas-salakhov-VK7TCqcZTlw-unsplash.jpg': Operation not permitted
-chown: changing ownership of 'source_images/mark-mc-neill-4xWHIpY2QcY-unsplash.jpg': Operation not permitted
-chown: changing ownership of 'source_images/wolfgang-hasselmann-RLEgmd1O7gs-unsplash.jpg': Operation not permitted
+chown: changing ownership of 'source_images/voicu-apostol-MWER49YaD-M-unsplash.JPG': Operation not permitted
+chown: changing ownership of 'source_images/masaaki-komori-NYFaNoiPf7A-unsplash.JPG': Operation not permitted
+chown: changing ownership of 'source_images/andrea-de-santis-uCFuP0Gc_MM-unsplash.JPG': Operation not permitted
+chown: changing ownership of 'source_images/tabitha-turner-8hg0xRg5QIs-unsplash.JPG': Operation not permitted
+chown: changing ownership of 'source_images/nathaniel-worrell-zK_az6W3xIo-unsplash.JPG': Operation not permitted
+chown: changing ownership of 'source_images/kevin-charit-XZoaTJTnB9U-unsplash.JPG': Operation not permitted
+chown: changing ownership of 'source_images/calvin-craig-T3M72YMf2oc-unsplash.JPG': Operation not permitted
+chown: changing ownership of 'source_images/eleanor-brooke-w-TLY0Ym4rM-unsplash.JPG': Operation not permitted
+chown: changing ownership of 'source_images/finn-whelen-DTfhsDIWNSg-unsplash.JPG': Operation not permitted
+chown: changing ownership of 'source_images/x.JPG': Operation not permitted
+chown: changing ownership of 'source_images/--reference=x.JPG': Operation not permitted
+chown: changing ownership of 'source_images/almas-salakhov-VK7TCqcZTlw-unsplash.JPG': Operation not permitted
+chown: changing ownership of 'source_images/mark-mc-neill-4xWHIpY2QcY-unsplash.JPG': Operation not permitted
+chown: changing ownership of 'source_images/wolfgang-hasselmann-RLEgmd1O7gs-unsplash.JPG': Operation not permitted
 ```
 
 Let's see what that script do:
@@ -299,7 +299,7 @@ then
 fi
 
 # protect the priceless originals
-find source_images -type f -name '*.jpg' -exec chown root:root {} \;
+find source_images -type f -name '*.JPG' -exec chown root:root {} \;
 ```
 
 The script is copying the content of the **photobomb.log** and put in inside **photobomb.log.old**.
@@ -335,4 +335,8 @@ cat root.txt
 
 #### Pwned
 
-![rooted](post/Photobomb_HTB/imgs/rooted.jpg)
+<<<<<<< HEAD
+![rooted](imgs/rooted.JPG)
+=======
+![rooted](post/Photobomb_HTB/imgs/rooted.JPG)
+>>>>>>> c40917692c858d54a00d622d840e56c9f4c255ad
