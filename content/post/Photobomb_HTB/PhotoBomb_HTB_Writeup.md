@@ -7,6 +7,7 @@ draft = false
 slug = ""
 
 tags = [
+	'HackTheBox',
     'PenTesting',  
     'Web', 
     'Exploit', 
@@ -29,43 +30,6 @@ image = "post/Photobomb_HTB/photobomb_htb.jpg"
 ```bash
 $ nmap 10.10.11.182 -A -T4 -p- -oN nmap.txt
 Starting Nmap 7.93 ( https://nmap.org ) at 2022-11-10 08:38 EST
-Stats: 0:00:05 elapsed; 0 hosts completed (0 up), 1 undergoing Ping Scan
-Parallel DNS resolution of 1 host. Timing: About 0.00% done
-Stats: 0:00:23 elapsed; 0 hosts completed (1 up), 1 undergoing Connect Scan
-Connect Scan Timing: About 0.63% done
-Stats: 0:00:44 elapsed; 0 hosts completed (1 up), 1 undergoing Connect Scan
-Connect Scan Timing: About 3.11% done; ETC: 08:54 (0:15:34 remaining)
-Stats: 0:01:10 elapsed; 0 hosts completed (1 up), 1 undergoing Connect Scan
-Connect Scan Timing: About 6.54% done; ETC: 08:52 (0:13:21 remaining)
-Stats: 0:01:11 elapsed; 0 hosts completed (1 up), 1 undergoing Connect Scan
-Connect Scan Timing: About 6.78% done; ETC: 08:52 (0:13:04 remaining)
-Stats: 0:01:12 elapsed; 0 hosts completed (1 up), 1 undergoing Connect Scan
-Connect Scan Timing: About 6.89% done; ETC: 08:52 (0:13:03 remaining)
-Stats: 0:01:13 elapsed; 0 hosts completed (1 up), 1 undergoing Connect Scan
-Connect Scan Timing: About 6.98% done; ETC: 08:52 (0:13:06 remaining)
-Stats: 0:01:13 elapsed; 0 hosts completed (1 up), 1 undergoing Connect Scan
-Connect Scan Timing: About 6.99% done; ETC: 08:52 (0:13:05 remaining)
-Stats: 0:01:13 elapsed; 0 hosts completed (1 up), 1 undergoing Connect Scan
-Connect Scan Timing: About 7.04% done; ETC: 08:52 (0:12:59 remaining)
-Stats: 0:01:13 elapsed; 0 hosts completed (1 up), 1 undergoing Connect Scan
-Connect Scan Timing: About 7.06% done; ETC: 08:52 (0:12:56 remaining)
-Stats: 0:01:14 elapsed; 0 hosts completed (1 up), 1 undergoing Connect Scan
-Connect Scan Timing: About 7.08% done; ETC: 08:52 (0:13:07 remaining)
-Stats: 0:01:14 elapsed; 0 hosts completed (1 up), 1 undergoing Connect Scan
-Connect Scan Timing: About 7.12% done; ETC: 08:52 (0:13:03 remaining)
-Stats: 0:01:14 elapsed; 0 hosts completed (1 up), 1 undergoing Connect Scan
-Connect Scan Timing: About 7.16% done; ETC: 08:52 (0:12:58 remaining)
-Stats: 0:01:14 elapsed; 0 hosts completed (1 up), 1 undergoing Connect Scan
-Connect Scan Timing: About 7.16% done; ETC: 08:52 (0:12:57 remaining)
-Stats: 0:01:14 elapsed; 0 hosts completed (1 up), 1 undergoing Connect Scan
-Connect Scan Timing: About 7.17% done; ETC: 08:52 (0:12:57 remaining)
-Stats: 0:01:14 elapsed; 0 hosts completed (1 up), 1 undergoing Connect Scan
-Connect Scan Timing: About 7.19% done; ETC: 08:52 (0:12:55 remaining)
-Stats: 0:01:15 elapsed; 0 hosts completed (1 up), 1 undergoing Connect Scan
-Connect Scan Timing: About 7.21% done; ETC: 08:52 (0:13:05 remaining)
-Stats: 0:01:15 elapsed; 0 hosts completed (1 up), 1 undergoing Connect Scan
-Connect Scan Timing: About 7.21% done; ETC: 08:52 (0:13:05 remaining)
-Warning: 10.10.11.182 giving up on port because retransmission cap hit (6).
 Nmap scan report for 10.10.11.182
 Host is up (0.20s latency).
 Not shown: 65524 closed tcp ports (conn-refused)
@@ -243,7 +207,7 @@ ls
 photobomb  user.txt
 wizard@photobomb:~$ cat user.txt
 cat user.txt
-41ca28b0feb7e65553b07391beec7031
+41ca28b0feb7e65XXXXXXXXXXXXXX
 ```
 
 ## Privilage Escalation
@@ -335,7 +299,7 @@ ls
 root.txt
 root@photobomb:~# cat root.txt
 cat root.txt
-c40917692c858d54a00d622d840e56c9f4c255ad
+c40917692c858d54a00xxxxxxxxxxxxxxx
 ```
 
 _Pwned_
