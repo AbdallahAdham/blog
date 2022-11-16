@@ -1,7 +1,7 @@
 author = ['Abdallah Adham']
-title = "Shoppy HTB Writeup"
+title = "RedPanda HTB Writeup"
 date = 2022-11-16
-description = "This is a writeup of the Shoppy machine in Hack The Box platform."
+description = "This is a writeup of the RedPanda machine in Hack The Box platform."
 draft = false
 slug = ""
 
