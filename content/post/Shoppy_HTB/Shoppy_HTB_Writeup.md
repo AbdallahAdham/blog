@@ -1,6 +1,7 @@
++++
 author = ['Abdallah Adham']
 title = "Shoppy HTB Writeup"
-date = 2022-11-8
+date = 2022-11-08
 description = "This is a writeup of the Shoppy machine in Hack The Box platform."
 draft = false
 slug = ""
